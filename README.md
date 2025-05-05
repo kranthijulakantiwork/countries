@@ -3,7 +3,10 @@
 Clone the repo using git clone https://github.com/kranthijulakantiwork/countries.git or download zip
 
 First install dependencies
-`run npm install`
+
+```bash
+npm install
+```
 
 Run the development server:
 
