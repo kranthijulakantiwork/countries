@@ -1,7 +1,9 @@
 "use client";
 
-import { Globe, LogIn, LogOut, User } from "lucide-react";
+import { Globe, Heart, LogIn, LogOut, User } from "lucide-react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "src/components/ui/button";
 import {
   DropdownMenu,
@@ -20,6 +22,8 @@ export default function Header() {
   const isAuthenticated = useAppSelector(selectIsAuthenticated);
   const user = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
+  const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
 
   const handleLogout = () => {
     dispatch(logout());
@@ -36,6 +40,16 @@ export default function Header() {
         <div className="flex items-center space-x-4">
           {isAuthenticated ? (
             <>
+              <Button
+                variant={pathname === "/favorites" ? "default" : "ghost"}
+                size="sm"
+                asChild
+              >
+                <Link href="/favorites">
+                  <Heart className="h-4 w-4 mr-2" />
+                  Favorites
+                </Link>
+              </Button>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="sm">
