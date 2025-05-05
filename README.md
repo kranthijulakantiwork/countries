@@ -31,3 +31,7 @@ password: password123
 # Explanation of your chosen state management solution.
 
 - For State management, used redux toolkit as it is simple to implement and has inbuilt RTK query which has inbuilt caching feature.
+
+## Link to deployed application.
+
+https://tangerine-raindrop-2a2bf4.netlify.app/
