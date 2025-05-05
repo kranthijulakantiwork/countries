@@ -1,6 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Setup Instructions
 
-## Getting Started
+Clone the repo using git clone https://github.com/kranthijulakantiwork/countries.git or download zip
 
 First, run the development server:
 
@@ -16,21 +16,18 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Credentials for mock login
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+username: testuser
+password: password123
 
-## Learn More
+## Design choices, assumptions, and explanation of SSG/SSR choices.
 
-To learn more about Next.js, take a look at the following resources:
+- For styling used tailwindcss as it is enables faster development, maintainability and simplifies creation of responsive design and easier to scale.
+- Used Shadcn components, as they are plain and easily customizable.
+- Used SSR across home page and country details page as they have data fetching and loading will be faster with SSR.
+- Used client side rendering across login and favorites, as there is not much dynamic data from server.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Explanation of your chosen state management solution.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- For State management, used redux toolkit as it is simple to implement and has inbuilt RTK query which has inbuilt caching feature.
