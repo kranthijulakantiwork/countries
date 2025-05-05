@@ -21,6 +21,7 @@ import {
 import { selectIsAuthenticated } from "src/store/features/auth-slice";
 import { useRouter } from "next/navigation";
 import { formatNumber } from "src/lib/utils";
+import { toast } from "sonner";
 
 interface CountryCardProps {
   country: Country;
@@ -44,8 +45,10 @@ export default function CountryCard({ country }: CountryCardProps) {
 
     if (isFavorite) {
       dispatch(removeFavorite(country.cca2));
+      toast.success(`Removed ${country.name.common} from favorites.`);
     } else {
       dispatch(addFavorite(country.cca2));
+      toast.success(`Added ${country.name.common} to favorites!`);
     }
   };
 

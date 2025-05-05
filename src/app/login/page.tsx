@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { type FormEvent, useState } from "react";
+import { toast } from "sonner";
 import { Button } from "src/components/ui/button";
 import {
   Card,
@@ -33,10 +34,14 @@ export default function LoginPage() {
     // Mock authentication - in a real app, this would be an API call
     if (username === "testuser" && password === "password123") {
       dispatch(login({ username }));
-      // show success toast
+      toast.success("Login successful", {
+        description: "Welcome back!",
+      });
       router.push(returnUrl);
     } else {
-      //  show error toast
+      toast.error("Login failed", {
+        description: "Invalid username or password. Try testuser/password123",
+      });
     }
 
     setIsLoading(false);

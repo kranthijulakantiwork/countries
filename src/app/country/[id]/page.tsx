@@ -9,7 +9,8 @@ export async function generateMetadata({
   params: { id: string };
 }): Promise<Metadata> {
   try {
-    const country = await getCountryByCode(params.id);
+    const { id } = await params;
+    const country = await getCountryByCode(id);
     return {
       title: `${country.name.common} | Country Explorer`,
       description: `Learn about ${country.name.common}, its geography, population, and more.`,
@@ -28,7 +29,8 @@ export default async function CountryPage({
   params: { id: string };
 }) {
   try {
-    const country = await getCountryByCode(params.id);
+    const { id } = await params;
+    const country = await getCountryByCode(id);
     return <CountryDetail country={country} />;
   } catch {
     notFound();

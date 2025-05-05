@@ -16,6 +16,7 @@ const nextConfig = {
     ],
     unoptimized: true,
   },
+  transpilePackages: ["sonner"],
 };
 
 export default nextConfig;

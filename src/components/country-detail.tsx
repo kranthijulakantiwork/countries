@@ -1,19 +1,20 @@
 "use client";
 
-import type { Country } from "src/types/country";
-import { Button } from "src/components/ui/button";
-import { useRequireAuth } from "src/hooks/use-require-auth";
+import { ArrowLeft, Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Heart } from "lucide-react";
-import { useAppDispatch, useAppSelector } from "src/store/hooks";
+import { toast } from "sonner";
+import { Button } from "src/components/ui/button";
+import { useRequireAuth } from "src/hooks/use-require-auth";
+import { formatNumber } from "src/lib/utils";
+import { useGetBorderCountriesQuery } from "src/store/api/countries-api";
 import {
   addFavorite,
   removeFavorite,
   selectFavorites,
 } from "src/store/features/favorites-slice";
-import { formatNumber } from "src/lib/utils";
-import { useGetBorderCountriesQuery } from "src/store/api/countries-api";
+import { useAppDispatch, useAppSelector } from "src/store/hooks";
+import type { Country } from "src/types/country";
 
 interface CountryDetailProps {
   country: Country;
@@ -39,8 +40,10 @@ export default function CountryDetail({ country }: CountryDetailProps) {
   const handleFavoriteToggle = () => {
     if (isFavorite) {
       dispatch(removeFavorite(country.cca2));
+      toast.success(`${country.name.common} removed from favorites.`);
     } else {
       dispatch(addFavorite(country.cca2));
+      toast.success(`${country.name.common} added to favorites!`);
     }
   };
 
